@@ -8,7 +8,7 @@ import {paginate} from "./common/utils/paginate"
 
 class Movies extends Component {
   state = {
-    movies: [],
+    movies: [], 
     genres: [],
     currentPage : 1,
     pageSize: 4
@@ -37,16 +37,20 @@ class Movies extends Component {
   };
 
   handleGenreSelect = genre => {
-    this.setState({selectedGenre: genre});
+    this.setState({selectedItem : genre});
   };
 
 
   render() {
     const { length: count } = this.state.movies;
-    const {pageSize , currentPage, movies : allMovies} = this.state;
+    const { pageSize , currentPage , selectedGenre , movies : allMovies} = this.state;
     if (count === 0) return <p>There are no movies in the database.</p>;
-    
-    const movies = paginate(allMovies, currentPage, pageSize)
+     
+    const filtered = selectedGenre 
+      ? allMovies.filter( m => m.genre._id === selectedGenre._id)
+      : allMovies;
+
+    const movies = paginate(filtered, currentPage, pageSize)
 
     return (
       <div className='row'>
@@ -89,7 +93,10 @@ class Movies extends Component {
             ))}
           </tbody>
         </table>
-        <Pagination itemsCount={count} pageSize={pageSize} currentPage={currentPage} onPageChange={this.handlePageChange}  /></div>
+        <Pagination itemsCount={count} 
+        pageSize={pageSize} 
+        currentPage={currentPage} 
+        onPageChange={this.handlePageChange}  /></div>
       </div>
     );
   }
