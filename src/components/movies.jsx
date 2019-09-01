@@ -4,7 +4,7 @@ import ListGroup from './common/listGroup';
 import Pagination from "./common/pagination";
 import { getMovies } from "../services/fakeMovieService";
 import { getGenres } from '../services/fakeGenreService';
-import { paginate } from "./common/utils/paginate"
+import { paginate } from "./common/utils/paginate"; 
 import _ from 'lodash';
 
 class Movies extends Component {
@@ -74,6 +74,7 @@ class Movies extends Component {
         
         <MoviesTable
         movies={movies} 
+        sortColumn={sortColumn}
         onLike={this.handleLike} 
         onDelete={this.handleDelete } 
         onSort={this.handleSort}/>
