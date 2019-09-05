@@ -6,13 +6,9 @@ const Table = props => {
   const { columns, sortColumn, onSort, data } = props;
   return (
     <table className="table">
-      <TableHeader
-        columns={this.columns}
-        sortColumn={sortColumn}
-        onSort={onSort}
-      />
+      <TableHeader columns={columns} sortColumn={sortColumn} onSort={onSort} />
 
-      <TableBody data={data} columns={this.columns} />
+      <TableBody data={data} columns={columns} />
     </table>
   );
 };
