@@ -40,7 +40,7 @@ class Movies extends Component {
         toast.error("This movie has already been deleted.");
       this.state({ movies: originalMovies });
     }
-  };
+  }; 
 
   handleLike = movie => {
     const movies = [...this.state.movies];
